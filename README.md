@@ -23,13 +23,7 @@ Per project:
 
 ## Uninstall
 
-If it's your only plugin, remove the plugin file from whichever
-directory you installed it:
-
-`rm .bundle/plugin/index`
-
-If you have other plugins, edit `.bundle/plugin/index` and remove
-relevant entries.
+`bundler plugin uninstall bundler-symlink`
 
 ## Why?
 
