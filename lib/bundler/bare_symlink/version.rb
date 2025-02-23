@@ -1,5 +1,5 @@
 module Bundler
-  module Symlink
+  module BareSymlink
     VERSION = "0.4.0"
   end
 end
