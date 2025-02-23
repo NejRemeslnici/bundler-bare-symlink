@@ -25,5 +25,6 @@ Gem::Specification.new do |spec|
   spec.executables = []
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "bundler", ">= 2.0.0"
+  spec.required_ruby_version = ">= 3.0"
+  spec.add_runtime_dependency "bundler", "~> 2.0"
 end
