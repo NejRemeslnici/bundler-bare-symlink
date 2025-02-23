@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.licenses = ["WTFPL"]
 
   spec.summary = "Post-install hook for bundler to create symlinks all gems from a local directory, using just bare gem names without versions"
-  spec.homepage = "https://github.com/borama/bundler-bare-symlink"
+  spec.homepage = "https://github.com/NejRemeslnici/bundler-bare-symlink"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
