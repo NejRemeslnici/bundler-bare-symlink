@@ -4,7 +4,7 @@ require "tmpdir"
 require "fileutils"
 
 module Bundler
-  module Symlink
+  module BareSymlink
     def self.call
       root_path = File.dirname(Bundler.default_gemfile)
       target_dir = File.join(
@@ -20,18 +20,11 @@ module Bundler
         Bundler
           .load
           .specs
-          .map(&:full_gem_path)
-          .reject {|path| path.start_with?(root_path)}
-          .each do |gem_path|
-            target = File.join(
-              link_dir,
-              File.basename(gem_path)
-            )
-
-            FileUtils.ln_s(
-              gem_path,
-              target
-            )
+          .inject({}) { |result, spec| result[spec.name] = spec.full_gem_path; result }
+          .reject { |name, gem_path| gem_path.start_with?(root_path) }
+          .each do |name, gem_path|
+            target = File.join(link_dir, name)
+            FileUtils.ln_s(gem_path, target)
           end
 
         FileUtils.mkdir_p(File.dirname(target_dir))
@@ -42,10 +35,10 @@ module Bundler
     end
 
     class Command
-      Plugin::API.command('symlink', self)
+      Plugin::API.command('bare_symlink', self)
 
       def exec(name, args)
-        Symlink.call
+        BareSymlink.call
       end
     end
   end
