@@ -1,4 +1,4 @@
-require "bundler/symlink/version"
+require "bundler/bare_symlink/version"
 
 require "tmpdir"
 require "fileutils"
